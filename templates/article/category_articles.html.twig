@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+    {% block title %}Home
+{% endblock %}
+
+{% block content %}
+
+
+
+
+       <div class="row mb-5 justify-content-center">
+            <div class="col-lg-9">
+            <span class="fw-normal text-uppercase d-block mb-1">Categories</span>
+                <h2 class="heading">{{category.name}}</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+
+        {% for article in category.articles %}
+
+                      {{ include('partials/_card_article.html.twig' , {'parent_class' : 'col-lg-9' , 'child_class': 'me-md-5', 'article' : article}) }}
+
+       {% endfor %}
+        </div>
+
+
+{% endblock %}
+

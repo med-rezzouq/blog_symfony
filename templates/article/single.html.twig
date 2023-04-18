@@ -1,0 +1,165 @@
+{% extends 'layout.html.twig' %}
+{% form_theme addCommentForm _self %}
+    {% block title %}Home
+{% endblock %}
+
+{% block content %}
+
+<!--  single  article !-->
+<div class="section post-section pt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="text-center">
+                    <img src="https://i.pravatar.cc/45" alt="Image" class="author-pic img-fluid rounded-circle mx-auto">
+                </div>
+                <span class="d-block text-center">{{article.user.username}}</span>
+                <span class="date d-block text-center small text-uppercase text-black-50 mb-5">{{article.dateOfCreation|date("m/d/Y")}}</span>
+                <h2 class="heading text-center">{{article.title}}</h2>
+                <p class="lead mb-4 text-center">{{article.introduction}}</p>
+                <img src="https://picsum.photos/800/514" alt="Image" class="img-fluid rounded mb-4">
+                     <p>
+                         {{article.content}}
+                     </p>
+                <div class="row mt-5 pt-5 border-top">
+                    <div class="col-12">
+                        <span class="fw-bold text-black small mb-1">Share</span>
+                        <ul class="social list-unstyled">
+                            <li><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                            <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+
+                     <div class="row my-5">
+                       <h3 class="heading text-center">  WRITE YOUR COMMENT
+                            </h3>
+                        {{ form_start(addCommentForm) }}
+                        {{ form_row(addCommentForm) }}
+                        
+                        <button class="btn btn-primary" type="submit">
+                            Add Comment
+                        </button>
+                        {{ form_end(addCommentForm) }}
+                    </div>
+            
+
+                    <div class="row my-5 col-md-10">
+                            <h3 class="heading text-center">
+                            Article Comments
+                            </h3>
+
+                            {% for comment in article.comments %}
+                                {% if comment.isVisible == true %}
+
+                                <div class="item">
+                                                    <div class="post-entry d-block small-post-entry-v">
+                                
+                                        <div class="content">
+                                        
+                                            Author : <h4 class="heading mb-3">{{comment.name}}</h4>
+                                        
+                                           Comment : <p class="text-black black text-primary">{{comment.comment}}</p>
+                                    
+                                        </div>
+                                    </div>
+                                </div>
+                    {% endif %}
+                            <hr />
+
+                            {% endfor %}
+                           
+                       </div>
+                         
+             
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--  related articles !-->
+      
+<div class="section pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="heading">Related</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            {% for article in related %}
+                <div class="col-lg-12">
+                    <div class="post-entry d-md-flex small-horizontal mb-5">
+                       <div class="thumbnail">
+                        <a href="single.html">
+                            <img src="https://picsum.photos/781/502" alt="Image" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="content">
+                        <div class="post-meta mb-1">
+                            <a href="#" class="category">{{article.category.name}}</a>,  &mdash;
+                            <span class="date">{{article.dateOfCreation|date("m/d/Y")}}</span>
+                        </div>
+                                 <h2 class="heading mb-3"><a href="{{url('app_single_article', {'articleId' : article.slug })}}">{{article.title}}</a></h2>
+                    
+                        <p>{{article.introduction}}</p>
+                        <a href="#" class="post-author d-flex align-items-center">
+                            <div class="author-pic">
+                                <img src="https://i.pravatar.cc/45" alt="Image">
+                            </div>
+                            <div class="text">
+                                <strong>Author : {{article.user.username}}</strong>
+                               
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+             {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+{% block _comment_name_row %}
+{% if app.session.get('_security.last_username') is  null and app.user is null %}
+<div class="form-group row">
+        <label for="comment_name" class="required">{{ form_label(form, '', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}</label>
+		<div class="col-sm-8">
+        {{ form_widget(form, {'attr': {'class': 'form-control-plaintext'}}) }}
+        	{{ form_errors(form) }}
+        </div>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+{% block _comment_email_row %}
+{% if app.session.get('_security.last_username') is  null and app.user is null %}
+<div class="form-group row">
+
+        <label for="comment_name" class="required">{{ form_label(form, '', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}</label>
+		<div class="col-sm-8">
+        {{ form_widget(form, {'attr': {'class': 'form-control-plaintext'}}) }}
+        	{{ form_errors(form) }}
+        </div>
+</div>
+{% endif %}
+{% endblock %}
+   
+
+
+
+
+

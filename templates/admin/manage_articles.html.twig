@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+    {% block title %}ADMIN > Manage Articles
+{% endblock %}
+
+{% block content %}
+
+
+
+
+       <div class="row mb-5 justify-content-center">
+            <div class="col-lg-9">
+           
+                <h2 class="heading">Articles List</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+
+        {% for article in articles %}
+              {{ include('partials/_card_article.html.twig' , {'parent_class' : 'col-lg-9' , 'child_class': 'me-md-5', 'article' : article}) }}
+
+       {% endfor %}
+        </div>
+
+
+{% endblock %}
+

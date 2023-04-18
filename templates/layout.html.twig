@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	{{ include('partials/_header.html.twig' ) }}
+    	{% for label,messages in app.flashes %}
+		<div class="alert alert-{{ label }}">
+			{% for message in messages %}
+				<p>{{ message }}</p>
+				{% endfor %}
+			</div>
+		{% endfor %}
+
+{% block content %}{% endblock %}
+
+	{{ include('partials/_footer.html.twig' ) }}
+{% endblock %}
+

@@ -1,0 +1,27 @@
+       <div class="{{parent_class}}">
+                        <div class="post-entry d-md-flex xsmall-horizontal mb-5">
+                            <div class="{{child_class}} thumbnail mb-3 mb-md-0">
+                             <a href="{{url('app_single_article', {'articleId' : article.slug })}}">
+                                <img src="https://picsum.photos/150/97" alt="Image" class="img-fluid">
+                          </a>
+                            </div>
+                            <div class="content">
+                                <div class="post-meta mb-1">
+                                    <a href="{{url('app_category',{'categoryId' : article.category.slug })}}" class="category">{{article.category.name}}</a>
+                                    &mdash;
+                                    <span class="date">{{article.dateOfCreation|date("m/d/Y")}}</span>
+                                </div>
+                                  <h2 class="heading mb-3"><a href="{{url('app_single_article', {'articleId' : article.slug })}}">{{article.title}}</a></h2>
+                    
+                                <a href="{{url('app_user_articles',{'user' : article.user.username })}}" class="post-author d-flex align-items-center">
+                                    <div class="author-pic">
+                                        <img src="https://i.pravatar.cc/45" alt="Image">
+                                    </div>
+                                    <div class="text">
+                                        <strong>Author : {{article.user.username}}</strong>
+                                    
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>  

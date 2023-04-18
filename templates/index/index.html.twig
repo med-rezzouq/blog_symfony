@@ -1,0 +1,67 @@
+{% extends 'layout.html.twig' %}
+
+    {% block title %}Home
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+
+
+<!-- trending articles !-->
+
+{{ include('index/trending.html.twig' , {'trending' : trending }) }}
+
+<!-- recent  articles !-->
+<div class="section">
+    <div class="container">
+        <div class="row g-5">
+
+        {% for article in articles %}
+            <div class="col-lg-4">
+                <div class="post-entry d-block small-post-entry-v">
+                    <div class="thumbnail">
+                        <a href="single.html">
+                            <img src="https://picsum.photos/400/257" alt="Image" class="img-fluid">
+                        </a>
+                    </div>
+                     <div class="content">
+                        <div class="post-meta mb-1">
+                            <a href="#" class="category">{{article.category.name}}</a>,  &mdash;
+                            <span class="date">{{article.dateOfCreation|date("m/d/Y")}}</span>
+                        </div>
+                        <h2 class="heading mb-3"><a href="{{url('app_single_article', {'articleId' : article.slug })}}">{{article.title}}</a></h2>
+                        <p>{{article.introduction}}</p>
+                        <a href="#" class="post-author d-flex align-items-center">
+                            <div class="author-pic">
+                                <img src="https://i.pravatar.cc/45" alt="Image">
+                            </div>
+                            <div class="text">
+                                <strong>Author : {{article.user.username}}</strong>
+                               
+                            </div>
+                        </a>
+                        </div>
+                </div>
+            </div>
+        {% endfor %}
+      
+     
+        </div>
+    </div>
+</div>
+
+<!-- popular  articles !-->
+{{ include('index/popular.html.twig' , {'popular' : popular }) }}
+
+<!-- category  articles in home !-->
+
+{{ include('index/category_articles.html.twig' , {'home' : home }) }}
+
+
+{% endblock %}
+

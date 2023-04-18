@@ -1,0 +1,57 @@
+{% block footer %}
+
+	{{ include('partials/_subscribe.html.twig' ) }}
+    
+<div class="site-footer">
+    <div class="container">
+        <div class="row justify-content-center copyright">
+            <div class="col-lg-7 text-center">
+                <div class="widget">
+                    <ul class="social list-unstyled">
+                        <li><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                        <li><a href="#"><span class="icon-youtube-play"></span></a></li>
+                    </ul>
+                </div>
+                <div class="widget">
+                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                        All rights reserved
+                    </p>
+                    <div class="d-block">
+                        <a href="#" class="m-2">Terms &amp; Conditions</a>/
+                        <a href="#" class="m-2">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('js/tiny-slider.js')}}"></script>
+    <script src="{{asset('js/glightbox.min.js')}}"></script>
+    <script src="{{asset('js/aos.js')}}"></script>
+    <script src="{{asset('js/navbar.js')}}"></script>
+    <script src="{{asset('js/counter.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
+
+{% endblock  %}

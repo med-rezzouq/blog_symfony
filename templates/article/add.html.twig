@@ -1,0 +1,27 @@
+
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	Add Article
+{% endblock %}
+{% block content %}
+	<div class="container">
+		{{ form_start(addArticleForm) }}
+		{{ form_row(addArticleForm) }}
+		<button class="btn btn-primary" type="submit" name="save_article">
+			Save 
+		</button>
+
+        <button class="btn btn-primary" type="submit" name="save_draft">
+			Save Draft
+		</button>
+
+        <button class="btn btn-primary" type="submit" name="publish">
+			Publish
+		</button>
+
+		{{ form_end(addArticleForm) }}
+	</div>
+{% endblock %}
+
+
